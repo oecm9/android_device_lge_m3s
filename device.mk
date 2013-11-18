@@ -2,10 +2,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 $(call inherit-product, frameworks/base/build/phone-hdpi-512-dalvik-heap.mk)
 
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
-
-$(call inherit-product, vendor/cm/config/cdma.mk)
-
 $(call inherit-product, vendor/cm/config/themes_common.mk)
 
 $(call inherit-product, build/target/product/full.mk)
@@ -23,87 +19,6 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 
 # OTA stuff
 DATEANDTIME = $(shell date +'%Y%m%d-%H%M')
-
-# Sprint
-M3S_LS696 := false
-
-ifeq ($(M3S_LS696),true)
-
-ROMID=LS696
-
-DEVICE_PACKAGE_OVERLAYS += device/lge/m3s/LS696/overlay
-
-PRODUCT_NAME			    := m3s
-PRODUCT_DEVICE			    := m3s
-PRODUCT_BRAND			    := lge
-PRODUCT_MODEL			    := LG-LS696
-
-PRODUCT_RELEASE_NAME		    := LG Optimus Elite
--include vendor/cyanogen/products/common_versions.mk
-
-TARGET_OTA_ASSERT_DEVICE	    := m3s_sprint_us,m3s,LS696
-
-PRODUCT_BUILD_PROP_OVERRIDES +=	\
-	TARGET_PRODUCT=m3s_sprint_us \
-	PRODUCT_DEVICE=m3s \
-	PRODUCT_NAME=m3s_sprint_us \
-	TARGET_BOOTLOADER_BOARD_NAME=lge_m3s \
-	PRODUCT_MANUFACTURER=LGE \
-	PRODUCT_DEFAULT_LANGUAGE=en \
-	PRODUCT_DEFAULT_REGION=US 
-
-PRODUCT_PROPERTY_OVERRIDES += \
-ro.cdma.home.operator.alpha=Sprint \
-ro.cdma.home.operator.numeric=310120 \
-ro.com.google.clientidbase=android-lge \
-ro.com.google.clientidbase.yt=android-sprint-us \
-ro.com.google.clientidbase.am=android-sprint-us \
-ro.com.google.clientidbase.gmm=android-lge \
-ro.com.google.clientidbase.ms=android-sprint-us
-
-else
-
-ROMID=VM696
-
-DEVICE_PACKAGE_OVERLAYS += device/lge/m3s/overlay
-
-PRODUCT_NAME			    := m3s
-PRODUCT_DEVICE			    := m3s
-PRODUCT_BRAND			    := lge
-PRODUCT_MODEL			    := LG-VM696
-
-PRODUCT_RELEASE_NAME		    := LG Optimus Elite
--include vendor/cyanogen/products/common_versions.mk
-
-TARGET_OTA_ASSERT_DEVICE	    := m3s_virgin_us,m3s,VM696
-
-PRODUCT_BUILD_PROP_OVERRIDES+= \
-	TARGET_PRODUCT=m3s_virgin_us \
-	PRODUCT_DEVICE=m3s \
-	PRODUCT_NAME=m3s_virgin_us \
-	TARGET_BOOTLOADER_BOARD_NAME=lge_m3s \
-	PRODUCT_MANUFACTURER=LGE \
-	PRODUCT_DEFAULT_LANGUAGE=en \
-	PRODUCT_DEFAULT_REGION=US \
-
-PRODUCT_PROPERTY_OVERRIDES += \
-ro.cdma.home.operator.alpha=Virgin_Mobile \
-ro.cdma.home.operator.subscriber=31000 \
-ro.cdma.home.operator.numeric=311490 \
-gsm.sim.operator.alpha=Virgin_Mobile \
-gsm.sim.operator.numeric=311490 \
-gsm.sim.operator.iso-country=us \
-gsm.operator.alpha=Virgin_Mobile \
-gsm.operator.numeric=311490 \
-gsm.operator.iso-country=us \
-ro.com.google.clientidbase=android-lge \
-ro.com.google.clientidbase.yt=android-virgin-us \
-ro.com.google.clientidbase.am=android-virgin-us \
-ro.com.google.clientidbase.gmm=android-lge \
-ro.com.google.clientidbase.ms=android-virgin-us
-
-endif
-
 
 PRODUCT_AAPT_CONFIG := normal mdpi
 PRODUCT_AAPT_PREF_CONFIG := mdpi

@@ -1,1 +1,1 @@
-add_lunch_combo m3s-userdebug
+add_lunch_combo cm_m3s-userdebug

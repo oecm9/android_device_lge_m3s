@@ -6,10 +6,11 @@
 ro.telephony.ril_class=LGEQualcommRIL
 ro.telephony.no_icc=true
 ro.ril.disable.power.collapse=0
-ro.telephony.ril.v3=signalstrength,datacall
+ro.telephony.call_ring.multiple=false
+ro.telephony.ril.v3=icccardstatus,skipbrokendatacall,datacall,signalstrength,facilitylock
 ro.ril.def.preferred.network=4
 ro.telephony.default_network=4
-mobiledata.interfaces=wlan0,rmnet0
+mobiledata.interfaces=rmnet0,rmnet1,rmnet2
 rild.libpath=/system/lib/libril-qc-qmi-1.so
 rild.libargs=-d /dev/smd0
 persist.rild.nitz_plmn=
@@ -212,4 +213,10 @@ ro.telephony.call_ring.multiple=false
 persist.sys.purgeable_assets=1
 sys.mem.max_hidden_apps=3
 
+# Hardware Info
+ro.device.chipset=Qualcomm Snapdragon MSM8655
+ro.device.gpu=Adreno 205
+ro.device.front_cam=Not available
+ro.device.rear_cam=5 Megapixels
+ro.device.screen_res=320x480
 ################ end system.prop
